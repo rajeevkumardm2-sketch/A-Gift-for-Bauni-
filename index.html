@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Nisha! 🎉</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Cinematic Letterbox Bars (Movie Theatre Feel) -->
+  <div class="cinematic-bar top"></div>
+  <div class="cinematic-bar bottom"></div>
+
+  <!-- Camera Flash Effect for Photo Switches -->
+  <div class="camera-flash" id="cameraFlash"></div>
+
+  <!-- Background Fireworks Canvas -->
+  <canvas id="fireworksCanvas"></canvas>
+
+  <!-- Background Audio -->
+  <audio id="bgMusic" loop>
+    <source src="birthday-song.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Party Poppers Elements (Left & Right) -->
+  <div class="poppereffect left-pop" id="leftPop">🎉✨</div>
+  <div class="poppereffect right-pop" id="rightPop">✨🎉</div>
+
+  <!-- Main Container -->
+  <div class="container" id="mainContainer">
+    
+    <!-- Scene 1: Intro & Gift Box -->
+    <div id="sceneIntro" class="scene active">
+      <h1 class="glow-title">Happy Birthday Nisha! 🎂</h1>
+      <div class="gift-box-wrapper" onclick="openSurprise()">
+        <div class="gift-box">🎁</div>
+        <p class="box-hint">Open your surprise</p>
+      </div>
+    </div>
+
+    <!-- Scene 2: Photo Slideshow & Finale -->
+    <div id="sceneContent" class="scene hidden" onclick="nextStep()">
+      
+      <!-- Photo Frame -->
+      <div class="photo-card" id="photoCardBox">
+        <img id="displayPhoto" src="" alt="Birthday Photo">
+      </div>
+      <p id="photoCaption" class="caption"></p>
+      <p class="tap-instruction">(Tap anywhere for next scene 🎬)</p>
+
+      <!-- Grand Finale (Bauni Screen) -->
+      <div id="finaleBox" class="finale-box hidden">
+        <h1 class="finale-title">Happy Birthday Bauni! ✨💖</h1>
+        <p class="finale-sub">Stay happy and keep smiling always! 🌟</p>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

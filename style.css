@@ -1,0 +1,221 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #030305;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Cinematic Theatre Bars */
+.cinematic-bar {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 35px;
+  background-color: #000000;
+  z-index: 20;
+  pointer-events: none;
+}
+.cinematic-bar.top { top: 0; }
+.cinematic-bar.bottom { bottom: 0; }
+
+/* Camera Flash Effect */
+.camera-flash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  opacity: 0;
+  z-index: 15;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+#fireworksCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.container {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  width: 90%;
+  max-width: 420px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.scene {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.scene.active {
+  display: block;
+  opacity: 1;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Intro Styles */
+.glow-title {
+  font-size: 2.2rem;
+  background: linear-gradient(45deg, #ff007f, #ff9900, #4fe3c7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow 2s infinite alternate;
+  margin-bottom: 30px;
+}
+
+.gift-box-wrapper {
+  display: inline-block;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px dashed #ff007f;
+  border-radius: 20px;
+  transition: transform 0.3s;
+}
+
+.gift-box-wrapper:hover {
+  transform: scale(1.05);
+}
+
+.gift-box {
+  font-size: 4.5rem;
+  animation: bounceBox 1.5s infinite alternate;
+}
+
+.box-hint {
+  font-size: 1.1rem;
+  color: #ffcc00;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+/* Photo Card Styles with Ken Burns zoom */
+.photo-card {
+  width: 260px;
+  height: 320px;
+  margin: 0 auto 15px auto;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(255, 0, 127, 0.4);
+  border: 3px solid #ff007f;
+  background: #1f2833;
+  animation: popIn 0.6s ease-in-out;
+}
+
+.photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: zoomEffect 6s infinite alternate;
+}
+
+.caption {
+  font-size: 1.2rem;
+  color: #ffcc00;
+  font-weight: 600;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+  margin-bottom: 8px;
+  min-height: 30px;
+}
+
+.tap-instruction {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* Finale Box Styles */
+.finale-box {
+  animation: finaleZoom 1s ease-in-out forwards;
+}
+
+.finale-title {
+  font-size: 2.3rem;
+  background: linear-gradient(45deg, #ff007f, #7928ca, #ffcc00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow 1.5s infinite alternate;
+  margin-bottom: 15px;
+}
+
+.finale-sub {
+  font-size: 1.2rem;
+  color: #66fcf1;
+}
+
+/* Side Party Poppers Animation */
+.poppereffect {
+  position: absolute;
+  top: 50%;
+  font-size: 3rem;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.left-pop { left: -50px; }
+.right-pop { right: -50px; }
+
+@keyframes firePoppersLeft {
+  0% { transform: translate(0, 0) scale(0.5); opacity: 1; }
+  100% { transform: translate(150px, -100px) scale(1.5) rotate(45deg); opacity: 0; }
+}
+
+@keyframes firePoppersRight {
+  0% { transform: translate(0, 0) scale(0.5); opacity: 1; }
+  100% { transform: translate(-150px, -100px) scale(1.5) rotate(-45deg); opacity: 0; }
+}
+
+.active-left {
+  animation: firePoppersLeft 1s ease-out forwards;
+}
+
+.active-right {
+  animation: firePoppersRight 1s ease-out forwards;
+}
+
+@keyframes bounceBox {
+  from { transform: translateY(0); }
+  to { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+  from { filter: drop-shadow(0 0 8px #ff007f); }
+  to { filter: drop-shadow(0 0 25px #ff9900); }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes zoomEffect {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+
+@keyframes finaleZoom {
+  0% { opacity: 0; transform: scale(0.5); }
+  100% { opacity: 1; transform: scale(1); }
+}
